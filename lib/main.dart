@@ -61,16 +61,16 @@ class MyApp extends StatelessWidget {
         builder: (ctx, auth, _) => MaterialApp(
             title: 'Flutter Demo',
             theme: ThemeData(
-              primarySwatch: Colors.cyan,
-              accentColor: Colors.grey,
-              canvasColor: Color.fromRGBO(194,217,255,0.8),
+              primaryColor: Color(0xff05133c),
+              accentColor: Colors.white,
+              canvasColor: Color(0xff05133c),
               fontFamily: 'Raleway',
               textTheme: ThemeData.light().textTheme.copyWith(
                     body1: TextStyle(
-                      color: Color.fromRGBO(20, 51, 51, 1),
+                      color:  Colors.white,
                     ),
                     body2: TextStyle(
-                      color: Color.fromRGBO(20, 51, 51, 1),
+                      color: Colors.white
                     ),
                     title: TextStyle(
                       fontSize: 20,

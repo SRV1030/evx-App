@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "700212208362",
+    "firebase_url": "https://evxuser-d835c-default-rtdb.firebaseio.com",
+    "project_id": "evxuser-d835c",
+    "storage_bucket": "evxuser-d835c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700212208362:android:6b55a7d5f1c59c610e6d93",
+        "android_client_info": {
+          "package_name": "com.example.evxApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700212208362-svq6mhllbbak6i7i6to8d6kgtl6vs2h7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv8cExyQtgfcf58mJjhTOZ4v-Lm0aGQpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700212208362-svq6mhllbbak6i7i6to8d6kgtl6vs2h7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

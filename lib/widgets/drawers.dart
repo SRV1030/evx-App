@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/CreateEventScreen.dart';
-import '../screens/EventDetailsScreen.dart';
+import '../models/auth.dart';
+import 'package:provider/provider.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, Function tapHandler) {
@@ -51,20 +52,24 @@ class MainDrawer extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed('/');
             },
           ),
+           Divider(),
           buildListTile(
             'CreateEvent',
             Icons.event,
             () {
-               Navigator.of(context).pushNamed(CreateEventScreen.routeName);
+               Navigator.pushNamed( context, CreateEventScreen.routeName );
             },
           ),
-           buildListTile(
-            'Settings',
-            Icons.settings,
-            () {
-               
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.exit_to_app),
+            title: Text("LogOut"),
+            onTap: () {
+              Navigator.of(context).pop();
+              Provider.of<Auth>(context, listen: false).logOut();
             },
           ),
+           
         ],
       ),
     );

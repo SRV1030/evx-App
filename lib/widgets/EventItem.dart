@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mEvx/models/evxData.dart';
 import '../screens/EventDetailsScreen.dart';
 import 'package:provider/provider.dart';
 import '../models/auth.dart';
 import '../Provider/EvxEventsProvider.dart';
+
 class EventItem extends StatefulWidget {
   final String college;
   final String id;
@@ -30,17 +30,39 @@ class _EventItemState extends State<EventItem> {
   @override
   Widget build(BuildContext context) {
     final authData = Provider.of<Auth>(context, listen: false);
-    final eventsdata=Provider.of<EvxEventsProviders>(context, listen: false);
+    print(authData.userId);
+    final eventsdata = Provider.of<EvxEventsProviders>(context, listen: false);
     return InkWell(
       onTap: () {
         Navigator.of(context)
             .pushNamed(EventDetailScreen.routeName, arguments: widget.id);
       }, //()=>selectMeal(context),
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Color(0xff05133c),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 38,
+              color: Color(0xff020819),
+              offset: Offset(19, 19),
+            ),
+            BoxShadow(
+              blurRadius: 38,
+              color: Color(0xff081e5f),
+              offset: Offset(-19, -19),
+            )
+          ],
+          gradient: LinearGradient(
+            stops: [0, 1],
+            begin:Alignment.topLeft,
+            end:Alignment.bottomRight,
+            colors:[
+              Color(0xff051136),
+              Color(0xff051440),
+            ]            
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
-        elevation: 4,
         margin: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
@@ -64,7 +86,6 @@ class _EventItemState extends State<EventItem> {
                       Text(DateFormat.yMMMd().format(DateTime.now())),
                     ],
                   ),
-                 
                 ],
               ),
             ),
@@ -114,7 +135,10 @@ class _EventItemState extends State<EventItem> {
                     children: <Widget>[
                       Icon(Icons.category),
                       SizedBox(width: 6),
-                      Text(widget.category,style:TextStyle(fontSize: 25),),
+                      Text(
+                        widget.category,
+                        style: TextStyle(fontSize: 25),
+                      ),
                     ],
                   ),
                   // Row(
@@ -124,21 +148,21 @@ class _EventItemState extends State<EventItem> {
                   //     Text(club),
                   //   ],
                   // ),
-                   Consumer<EvxEventsProviders>(
+                  Consumer<EvxEventsProviders>(
                     builder: (ctx, event, _) => IconButton(
-                      icon: Icon(
-                        event.findById(widget.id).isFavourite
+                      icon: Icon(event.findById(widget.id).isFavourite
                           ? Icons.favorite
                           : Icons.favorite_border),
-                      color: event.findById(widget.id).isFavourite?Colors.red:Theme.of(context).accentColor,
+                      color: event.findById(widget.id).isFavourite
+                          ? Colors.red
+                          : Theme.of(context).accentColor,
                       iconSize: 40,
                       onPressed: () {
-                        event.toggleFavourite(authData.token,authData.userId,widget.id);  
-                                           
+                        event.toggleFavourite(
+                            authData.token, authData.userId, widget.id);
                       },
                     ),
                   ),
-                  
                 ],
               ),
             ),

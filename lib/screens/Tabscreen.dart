@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import './FavouriteScreen.dart';
 import './CreateEventScreen.dart';
-import './settings.dart';
+import './chat_screen.dart';
 import './RegisteredEventsScreen.dart';
 import './HomeScreen.dart';
 import '../widgets/drawers.dart';
@@ -30,10 +30,7 @@ class _TabsScreenState extends State<TabsScreen> {
     // TODO: implement initState
     _pages = [ 
       {'page': HomeScreen(), 'title': 'eVX'},
-      {'page':CreateEventScreen(), 'title': 'Amin'},
-      {'page': RegisteredEventsScreen(), 'title': 'Registered Events'},   
-      {'page': FavouriteScreen(), 'title': 'Favourites'},
-      {'page': SettingScreen(), 'title': 'Settings'},
+      {'page': ChatScreen(), 'title': 'Chat'},
     ];
     super.initState();
   }
@@ -43,7 +40,7 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title']),
-        backgroundColor: Colors.cyan,
+        backgroundColor: Color(0xff05133c),
         // actions: [
         // //   FlatButton(
         // //     onPressed: () {
@@ -59,7 +56,7 @@ class _TabsScreenState extends State<TabsScreen> {
         onTap: _selectPage,
         backgroundColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.grey,
+        selectedItemColor:Colors.blue,
         currentIndex:
             _selectedPageIndex, //tells the navigationbar whicjh index is chosen
         // type: BottomNavigationBarType.shifting, //for shifting animation
@@ -68,27 +65,11 @@ class _TabsScreenState extends State<TabsScreen> {
             backgroundColor: Theme.of(context).primaryColor,
             icon: Icon(Icons.home),
             title: Text("Home"),
-          ),
+          ),  
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
-            icon: Icon(Icons.admin_panel_settings),
-            title: Text("Admin"),
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).primaryColor,
-            icon: Icon(Icons.event),
-            title: Text("Events"),
-          ),
-          
-          BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).primaryColor,
-            icon: Icon(Icons.star),
-            title: Text("Favourites"),
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).primaryColor,
-            icon: Icon(Icons.settings),
-            title: Text("Settings"),
+            icon: Icon(Icons.chat_bubble),
+            title: Text("Chat"),
           ),
         ],
       ),

@@ -18,14 +18,34 @@ class EventDetailScreen extends StatelessWidget {
 
   Widget buildContainer(Widget child) {
     return Container(
-      decoration: BoxDecoration(
-          color: Colors.teal[50],
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(10)),
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
-      height: 200,
-      width: 300,
+       decoration: BoxDecoration(
+          color: Color(0xff05133c),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 38,
+              color: Color(0xff020819),
+              offset: Offset(19, 19),
+            ),
+            BoxShadow(
+              blurRadius: 38,
+              color: Color(0xff081e5f),
+              offset: Offset(-19, -19),
+            )
+          ],
+          gradient: LinearGradient(
+            stops: [0, 1],
+            begin:Alignment.topLeft,
+            end:Alignment.bottomRight,
+            colors:[
+              Color(0xff051136),
+              Color(0xff051440),
+            ]            
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+        ),
+        margin: EdgeInsets.all(10),
+      height: 500,
+      width: 400,
       child: child,
     );
   }
@@ -47,13 +67,13 @@ class EventDetailScreen extends StatelessWidget {
             width: double.infinity,
             child: Image.network(
               selectedEvent.image,
-              fit: BoxFit.cover,
+              fit: BoxFit.fitWidth,
             ),
           ),
           buildSectionTitle("Description", context),
           buildContainer(
             Card(
-              color: Theme.of(context).accentColor,
+              color: Color(0x00000000),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 5,
@@ -64,6 +84,7 @@ class EventDetailScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 20,
                     fontStyle: FontStyle.italic,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -73,7 +94,7 @@ class EventDetailScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor,
-        child: Icon(Icons.add),
+        child: Icon(Icons.add,color: Colors.white,),
         onPressed: () {
           Navigator.of(context).pushNamed(UserRegistrationScreen.routeName,arguments: id);
         },

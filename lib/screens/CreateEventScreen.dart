@@ -4,12 +4,14 @@ import '../models/evxOrganizers.dart';
 import '../Provider/EvxOrganizersEventsProvider.dart';
 
 class CreateEventScreen extends StatefulWidget {
+
   static const routeName = "/createEventScreen";
   @override
   _CreateEventScreenState createState() => _CreateEventScreenState();
 }
 
 class _CreateEventScreenState extends State<CreateEventScreen> {
+
   final _form = GlobalKey<FormState>();
   final _clubFocusNode = FocusNode();
   final _eventDeadlineFocusNode = FocusNode();
@@ -96,357 +98,360 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-        padding: EdgeInsets.all(16),
-        child: Form(
-          key: _form,
-          child: ListView(
-            children: [
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Event Name *'),
-                textInputAction: TextInputAction.next,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_clubFocusNode);
-                },
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide a value.';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _addedOrganizer = EvxOrganizers(
-                    eventId: _addedOrganizer.eventId,
-                    eventName: value,
-                    club: _addedOrganizer.club,
-                    eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
-                    registerationDeadline:
-                        _addedOrganizer.registerationDeadline,
-                    registerationLink: _addedOrganizer.registerationLink,
-                    catchupLink: _addedOrganizer.catchupLink,
-                    eventTime: _addedOrganizer.eventTime,
-                    eventType: _addedOrganizer.eventType,
-                    eventCategory: _addedOrganizer.eventCategory,
-                    eventDescription: _addedOrganizer.eventDescription,
-                  );
-                },
-              ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Club Name *'),
-                focusNode: _clubFocusNode,
-                textInputAction: TextInputAction.next,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context)
-                      .requestFocus(_eventRegisterationlinkFocusNode);
-                },
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide a value.';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _addedOrganizer = EvxOrganizers(
-                    eventId: _addedOrganizer.eventId,
-                    eventName: _addedOrganizer.eventName,
-                    club: value,
-                    eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
-                    registerationDeadline:
-                        _addedOrganizer.registerationDeadline,
-                    registerationLink: _addedOrganizer.registerationLink,
-                    catchupLink: _addedOrganizer.catchupLink,
-                    eventTime: _addedOrganizer.eventTime,
-                    eventType: _addedOrganizer.eventType,
-                    eventCategory: _addedOrganizer.eventCategory,
-                    eventDescription: _addedOrganizer.eventDescription,
-                  );
-                },
-              ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Registratuion Link *'),
-                textInputAction: TextInputAction.next,
-                focusNode: _eventRegisterationlinkFocusNode,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_eventDeadlineFocusNode);
-                },
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide a value.';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _addedOrganizer = EvxOrganizers(
-                    eventId: _addedOrganizer.eventId,
-                    eventName: _addedOrganizer.eventName,
-                    club: _addedOrganizer.club,
-                    eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
-                    registerationDeadline:
-                        _addedOrganizer.registerationDeadline,
-                    registerationLink: value,
-                    catchupLink: _addedOrganizer.catchupLink,
-                    eventTime: _addedOrganizer.eventTime,
-                    eventType: _addedOrganizer.eventType,
-                    eventCategory: _addedOrganizer.eventCategory,
-                    eventDescription: _addedOrganizer.eventDescription,
-                  );
-                },
-              ),
-              TextFormField(
-                decoration:
-                    InputDecoration(labelText: 'Registratuion DeadLine *'),
-                textInputAction: TextInputAction.next,
-                focusNode: _eventDeadlineFocusNode,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_catchUplinkFocusNode);
-                },
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide a value.';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _addedOrganizer = EvxOrganizers(
-                    eventId: _addedOrganizer.eventId,
-                    eventName: _addedOrganizer.eventName,
-                    club: _addedOrganizer.club,
-                    eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
-                    registerationDeadline: value,
-                    registerationLink: _addedOrganizer.registerationLink,
-                    catchupLink: _addedOrganizer.catchupLink,
-                    eventTime: _addedOrganizer.eventTime,
-                    eventType: _addedOrganizer.eventType,
-                    eventCategory: _addedOrganizer.eventCategory,
-                    eventDescription: _addedOrganizer.eventDescription,
-                  );
-                },
-              ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'CatchUp Link *'),
-                textInputAction: TextInputAction.next,
-                focusNode: _catchUplinkFocusNode,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_eventtimeFocusNode);
-                },
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide a value.';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _addedOrganizer = EvxOrganizers(
-                    eventId: _addedOrganizer.eventId,
-                    eventName: _addedOrganizer.eventName,
-                    club: _addedOrganizer.club,
-                    eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
-                    registerationDeadline:
-                        _addedOrganizer.registerationDeadline,
-                    registerationLink: _addedOrganizer.registerationLink,
-                    catchupLink: value,
-                    eventTime: _addedOrganizer.eventTime,
-                    eventType: _addedOrganizer.eventType,
-                    eventCategory: _addedOrganizer.eventCategory,
-                    eventDescription: _addedOrganizer.eventDescription,
-                  );
-                },
-              ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Event Time *'),
-                textInputAction: TextInputAction.next,
-                focusNode: _eventtimeFocusNode,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_eventTypeFocusNode);
-                },
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide a value.';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _addedOrganizer = EvxOrganizers(
-                    eventId: _addedOrganizer.eventId,
-                    eventName: _addedOrganizer.eventName,
-                    club: _addedOrganizer.club,
-                    eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
-                    registerationDeadline:
-                        _addedOrganizer.registerationDeadline,
-                    registerationLink: _addedOrganizer.registerationLink,
-                    catchupLink: _addedOrganizer.catchupLink,
-                    eventTime: value,
-                    eventType: _addedOrganizer.eventType,
-                    eventCategory: _addedOrganizer.eventCategory,
-                    eventDescription: _addedOrganizer.eventDescription,
-                  );
-                },
-              ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Event Type *'),
-                textInputAction: TextInputAction.next,
-                focusNode: _eventTypeFocusNode,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_eventCategoryFocusNode);
-                },
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide a value.';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _addedOrganizer = EvxOrganizers(
-                    eventId: _addedOrganizer.eventId,
-                    eventName: _addedOrganizer.eventName,
-                    club: _addedOrganizer.club,
-                    eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
-                    registerationDeadline:
-                        _addedOrganizer.registerationDeadline,
-                    registerationLink: _addedOrganizer.registerationLink,
-                    catchupLink: _addedOrganizer.catchupLink,
-                    eventTime: _addedOrganizer.eventTime,
-                    eventType: value,
-                    eventCategory: _addedOrganizer.eventCategory,
-                    eventDescription: _addedOrganizer.eventDescription,
-                  );
-                },
-              ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Event Category *'),
-                textInputAction: TextInputAction.next,
-                focusNode: _eventCategoryFocusNode,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context)
-                      .requestFocus(_eventDescriptionFocusNode);
-                },
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide a value.';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _addedOrganizer = EvxOrganizers(
-                    eventId: _addedOrganizer.eventId,
-                    eventName: _addedOrganizer.eventName,
-                    club: _addedOrganizer.club,
-                    eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
-                    registerationDeadline:
-                        _addedOrganizer.registerationDeadline,
-                    registerationLink: _addedOrganizer.registerationLink,
-                    catchupLink: _addedOrganizer.catchupLink,
-                    eventTime: _addedOrganizer.eventTime,
-                    eventType: _addedOrganizer.eventType,
-                    eventCategory: value,
-                    eventDescription: _addedOrganizer.eventDescription,
-                  );
-                },
-              ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Event Description *'),
-                textInputAction: TextInputAction.next,
-                focusNode: _eventDescriptionFocusNode,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_imageUrlFocusNode);
-                },
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide a value.';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _addedOrganizer = EvxOrganizers(
-                    eventId: _addedOrganizer.eventId,
-                    eventName: _addedOrganizer.eventName,
-                    club: _addedOrganizer.club,
-                    eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
-                    registerationDeadline:
-                        _addedOrganizer.registerationDeadline,
-                    registerationLink: _addedOrganizer.registerationLink,
-                    catchupLink: _addedOrganizer.catchupLink,
-                    eventTime: _addedOrganizer.eventTime,
-                    eventType: _addedOrganizer.eventType,
-                    eventCategory: _addedOrganizer.eventCategory,
-                    eventDescription: value,
-                  );
-                },
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Container(
-                    width: 100,
-                    height: 100,
-                    margin: EdgeInsets.only(
-                      top: 8,
-                      right: 10,
+    return  Scaffold(
+        appBar: AppBar(title: Text('Create youe Event'),),
+          body: Padding(
+          padding: EdgeInsets.all(16),
+          child: Form(
+            key: _form,
+            child: ListView(
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Event Name *'),
+                  textInputAction: TextInputAction.next,
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_clubFocusNode);
+                  },
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide a value.';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _addedOrganizer = EvxOrganizers(
+                      eventId: _addedOrganizer.eventId,
+                      eventName: value,
+                      club: _addedOrganizer.club,
+                      eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
+                      registerationDeadline:
+                          _addedOrganizer.registerationDeadline,
+                      registerationLink: _addedOrganizer.registerationLink,
+                      catchupLink: _addedOrganizer.catchupLink,
+                      eventTime: _addedOrganizer.eventTime,
+                      eventType: _addedOrganizer.eventType,
+                      eventCategory: _addedOrganizer.eventCategory,
+                      eventDescription: _addedOrganizer.eventDescription,
+                    );
+                  },
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Club Name *'),
+                  focusNode: _clubFocusNode,
+                  textInputAction: TextInputAction.next,
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context)
+                        .requestFocus(_eventRegisterationlinkFocusNode);
+                  },
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide a value.';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _addedOrganizer = EvxOrganizers(
+                      eventId: _addedOrganizer.eventId,
+                      eventName: _addedOrganizer.eventName,
+                      club: value,
+                      eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
+                      registerationDeadline:
+                          _addedOrganizer.registerationDeadline,
+                      registerationLink: _addedOrganizer.registerationLink,
+                      catchupLink: _addedOrganizer.catchupLink,
+                      eventTime: _addedOrganizer.eventTime,
+                      eventType: _addedOrganizer.eventType,
+                      eventCategory: _addedOrganizer.eventCategory,
+                      eventDescription: _addedOrganizer.eventDescription,
+                    );
+                  },
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Registratuion Link *'),
+                  textInputAction: TextInputAction.next,
+                  focusNode: _eventRegisterationlinkFocusNode,
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_eventDeadlineFocusNode);
+                  },
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide a value.';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _addedOrganizer = EvxOrganizers(
+                      eventId: _addedOrganizer.eventId,
+                      eventName: _addedOrganizer.eventName,
+                      club: _addedOrganizer.club,
+                      eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
+                      registerationDeadline:
+                          _addedOrganizer.registerationDeadline,
+                      registerationLink: value,
+                      catchupLink: _addedOrganizer.catchupLink,
+                      eventTime: _addedOrganizer.eventTime,
+                      eventType: _addedOrganizer.eventType,
+                      eventCategory: _addedOrganizer.eventCategory,
+                      eventDescription: _addedOrganizer.eventDescription,
+                    );
+                  },
+                ),
+                TextFormField(
+                  decoration:
+                      InputDecoration(labelText: 'Registratuion DeadLine *'),
+                  textInputAction: TextInputAction.next,
+                  focusNode: _eventDeadlineFocusNode,
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_catchUplinkFocusNode);
+                  },
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide a value.';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _addedOrganizer = EvxOrganizers(
+                      eventId: _addedOrganizer.eventId,
+                      eventName: _addedOrganizer.eventName,
+                      club: _addedOrganizer.club,
+                      eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
+                      registerationDeadline: value,
+                      registerationLink: _addedOrganizer.registerationLink,
+                      catchupLink: _addedOrganizer.catchupLink,
+                      eventTime: _addedOrganizer.eventTime,
+                      eventType: _addedOrganizer.eventType,
+                      eventCategory: _addedOrganizer.eventCategory,
+                      eventDescription: _addedOrganizer.eventDescription,
+                    );
+                  },
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'CatchUp Link *'),
+                  textInputAction: TextInputAction.next,
+                  focusNode: _catchUplinkFocusNode,
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_eventtimeFocusNode);
+                  },
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide a value.';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _addedOrganizer = EvxOrganizers(
+                      eventId: _addedOrganizer.eventId,
+                      eventName: _addedOrganizer.eventName,
+                      club: _addedOrganizer.club,
+                      eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
+                      registerationDeadline:
+                          _addedOrganizer.registerationDeadline,
+                      registerationLink: _addedOrganizer.registerationLink,
+                      catchupLink: value,
+                      eventTime: _addedOrganizer.eventTime,
+                      eventType: _addedOrganizer.eventType,
+                      eventCategory: _addedOrganizer.eventCategory,
+                      eventDescription: _addedOrganizer.eventDescription,
+                    );
+                  },
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Event Time *'),
+                  textInputAction: TextInputAction.next,
+                  focusNode: _eventtimeFocusNode,
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_eventTypeFocusNode);
+                  },
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide a value.';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _addedOrganizer = EvxOrganizers(
+                      eventId: _addedOrganizer.eventId,
+                      eventName: _addedOrganizer.eventName,
+                      club: _addedOrganizer.club,
+                      eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
+                      registerationDeadline:
+                          _addedOrganizer.registerationDeadline,
+                      registerationLink: _addedOrganizer.registerationLink,
+                      catchupLink: _addedOrganizer.catchupLink,
+                      eventTime: value,
+                      eventType: _addedOrganizer.eventType,
+                      eventCategory: _addedOrganizer.eventCategory,
+                      eventDescription: _addedOrganizer.eventDescription,
+                    );
+                  },
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Event Type *'),
+                  textInputAction: TextInputAction.next,
+                  focusNode: _eventTypeFocusNode,
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_eventCategoryFocusNode);
+                  },
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide a value.';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _addedOrganizer = EvxOrganizers(
+                      eventId: _addedOrganizer.eventId,
+                      eventName: _addedOrganizer.eventName,
+                      club: _addedOrganizer.club,
+                      eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
+                      registerationDeadline:
+                          _addedOrganizer.registerationDeadline,
+                      registerationLink: _addedOrganizer.registerationLink,
+                      catchupLink: _addedOrganizer.catchupLink,
+                      eventTime: _addedOrganizer.eventTime,
+                      eventType: value,
+                      eventCategory: _addedOrganizer.eventCategory,
+                      eventDescription: _addedOrganizer.eventDescription,
+                    );
+                  },
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Event Category *'),
+                  textInputAction: TextInputAction.next,
+                  focusNode: _eventCategoryFocusNode,
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context)
+                        .requestFocus(_eventDescriptionFocusNode);
+                  },
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide a value.';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _addedOrganizer = EvxOrganizers(
+                      eventId: _addedOrganizer.eventId,
+                      eventName: _addedOrganizer.eventName,
+                      club: _addedOrganizer.club,
+                      eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
+                      registerationDeadline:
+                          _addedOrganizer.registerationDeadline,
+                      registerationLink: _addedOrganizer.registerationLink,
+                      catchupLink: _addedOrganizer.catchupLink,
+                      eventTime: _addedOrganizer.eventTime,
+                      eventType: _addedOrganizer.eventType,
+                      eventCategory: value,
+                      eventDescription: _addedOrganizer.eventDescription,
+                    );
+                  },
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Event Description *'),
+                  textInputAction: TextInputAction.next,
+                  focusNode: _eventDescriptionFocusNode,
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_imageUrlFocusNode);
+                  },
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide a value.';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _addedOrganizer = EvxOrganizers(
+                      eventId: _addedOrganizer.eventId,
+                      eventName: _addedOrganizer.eventName,
+                      club: _addedOrganizer.club,
+                      eventPosterImgUrl: _addedOrganizer.eventPosterImgUrl,
+                      registerationDeadline:
+                          _addedOrganizer.registerationDeadline,
+                      registerationLink: _addedOrganizer.registerationLink,
+                      catchupLink: _addedOrganizer.catchupLink,
+                      eventTime: _addedOrganizer.eventTime,
+                      eventType: _addedOrganizer.eventType,
+                      eventCategory: _addedOrganizer.eventCategory,
+                      eventDescription: value,
+                    );
+                  },
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    Container(
+                      width: 100,
+                      height: 100,
+                      margin: EdgeInsets.only(
+                        top: 8,
+                        right: 10,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      child: _imageUrlController.text.isEmpty
+                          ? Text('Enter a URL')
+                          : FittedBox(
+                              child: Image.network(
+                                _imageUrlController.text,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                     ),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 1,
-                        color: Colors.grey,
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: 'Image URL'),
+                        //initialValue: _initvalues['imageUrl'] since image Url is being ctrolled by controller i.e _imageController it can't have initial value.. instead initialize the controller text           keyboardType: TextInputType.url,
+                        textInputAction: TextInputAction.done,
+                        controller: _imageUrlController,
+                        focusNode: _imageUrlFocusNode,
+                        onFieldSubmitted: (_) {
+                          FocusScope.of(context).requestFocus(_imageUrlFocusNode);
+                        },
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Please enter an image URL.';
+                          }
+                          if (!value.startsWith('http') &&
+                              !value.startsWith('https')) {
+                            return 'Please enter a valid URL.';
+                          }
+                          if (!value.endsWith('.png') &&
+                              !value.endsWith('.jpg') &&
+                              !value.endsWith('.jpeg')) {
+                            return 'Please enter a valid image URL.';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _addedOrganizer = EvxOrganizers(
+                      eventId: _addedOrganizer.eventId,
+                      eventName: _addedOrganizer.eventName,
+                      club: _addedOrganizer.club,
+                      eventPosterImgUrl: value,
+                      registerationDeadline:
+                          _addedOrganizer.registerationDeadline,
+                      registerationLink: _addedOrganizer.registerationLink,
+                      catchupLink: _addedOrganizer.catchupLink,
+                      eventTime: _addedOrganizer.eventTime,
+                      eventType: _addedOrganizer.eventType,
+                      eventCategory: _addedOrganizer.eventCategory,
+                      eventDescription: _addedOrganizer.eventDescription,
+                    );
+                         
+                        },
                       ),
                     ),
-                    child: _imageUrlController.text.isEmpty
-                        ? Text('Enter a URL')
-                        : FittedBox(
-                            child: Image.network(
-                              _imageUrlController.text,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                  ),
-                  Expanded(
-                    child: TextFormField(
-                      decoration: InputDecoration(labelText: 'Image URL'),
-                      //initialValue: _initvalues['imageUrl'] since image Url is being ctrolled by controller i.e _imageController it can't have initial value.. instead initialize the controller text           keyboardType: TextInputType.url,
-                      textInputAction: TextInputAction.done,
-                      controller: _imageUrlController,
-                      focusNode: _imageUrlFocusNode,
-                      onFieldSubmitted: (_) {
-                        FocusScope.of(context).requestFocus(_imageUrlFocusNode);
-                      },
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'Please enter an image URL.';
-                        }
-                        if (!value.startsWith('http') &&
-                            !value.startsWith('https')) {
-                          return 'Please enter a valid URL.';
-                        }
-                        if (!value.endsWith('.png') &&
-                            !value.endsWith('.jpg') &&
-                            !value.endsWith('.jpeg')) {
-                          return 'Please enter a valid image URL.';
-                        }
-                        return null;
-                      },
-                      onSaved: (value) {
-                        _addedOrganizer = EvxOrganizers(
-                    eventId: _addedOrganizer.eventId,
-                    eventName: _addedOrganizer.eventName,
-                    club: _addedOrganizer.club,
-                    eventPosterImgUrl: value,
-                    registerationDeadline:
-                        _addedOrganizer.registerationDeadline,
-                    registerationLink: _addedOrganizer.registerationLink,
-                    catchupLink: _addedOrganizer.catchupLink,
-                    eventTime: _addedOrganizer.eventTime,
-                    eventType: _addedOrganizer.eventType,
-                    eventCategory: _addedOrganizer.eventCategory,
-                    eventDescription: _addedOrganizer.eventDescription,
-                  );
-                       
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
-      );
+    );
   }
 }
