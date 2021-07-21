@@ -1,6 +1,6 @@
-#Video Demostration
+* #Video Demostration
 https://drive.google.com/file/d/1MP6qijuOj0vrExZugNmMtVm0kht5xb5V/view?usp=sharing
-#APK link
+* #APK link
 https://github.com/SRV1030/evx-App/blob/main/app-release.apk
 
 # mEvx
